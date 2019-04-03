@@ -127,8 +127,8 @@ int main() {
       
   // opratot (+)    
       
-     .CHECK_OUTPUT(aa+bb, "12[km]")
-     .CHECK_OUTPUT(aa+cc, "12[km]")
+     .CHECK_OUTPUT(aa+bb, "12.06[km]")
+     .CHECK_OUTPUT(aa+cc, "12.01[km]")
      .CHECK_OUTPUT(bb+aa, "12[km]")
      .CHECK_OUTPUT(bb+cc, "12[km]")
      .CHECK_OUTPUT(cc+aa, "12[km]")
