@@ -11,32 +11,45 @@ namespace ariel
     class PhysicalNumber
     {
     
-         public:
-         PhysicalNumber(double num,Unit u);
-         PhysicalNumber(const PhysicalNumber& pn);
+       public:
+       PhysicalNumber(double num,Unit u);
+       PhysicalNumber(const PhysicalNumber& pn);
+	    
+	    // onry operator
+            
+        PhysicalNumber operator+();
+        PhysicalNumber operator-();
+	    
+           // operator (+) && operator (-)
 
         const PhysicalNumber operator+(const PhysicalNumber&); 
 	const PhysicalNumber operator-(const PhysicalNumber&);
 	PhysicalNumber& operator+=(const PhysicalNumber&);
 	PhysicalNumber& operator-=(const PhysicalNumber&);
-	PhysicalNumber operator+(); // Unari
-	PhysicalNumber operator-(); // Unari
+	
 
-        bool operator> (const PhysicalNumber&) ;
-        bool operator< (const PhysicalNumber&) ;
-        bool operator>= (const PhysicalNumber&) ;
-        bool operator<= (const PhysicalNumber&) ;
-        bool operator== (const PhysicalNumber&) ;
-        bool operator!= (const PhysicalNumber&) ;
+	   // check equal by boolean operator
+	    
+        bool operator== (const PhysicalNumber&);
+        bool operator!= (const PhysicalNumber&);
+	bool operator> (const PhysicalNumber&);
+        bool operator< (const PhysicalNumber&);
+        bool operator>= (const PhysicalNumber&);
+        bool operator<= (const PhysicalNumber&);
+        
+      
+	   // promotion and subtraction operator
+	    
+        PhysicalNumber operator++(int);
+        PhysicalNumber operator++();
+        PhysicalNumber operator--(int);
+        PhysicalNumber operator--();
     
-        PhysicalNumber operator++();//++i
-        PhysicalNumber operator++(int);//i++
-        PhysicalNumber operator--();//--i
-        PhysicalNumber operator--(int);//i--
-    
-    
-        friend ostream& operator<< (ostream& os, const PhysicalNumber& c);//פלט
-        friend istream& operator>> (istream& is, PhysicalNumber& c);//קלט
+           // input && output
+	
+	friend istream& operator>> (istream& is, PhysicalNumber& c);    
+        friend ostream& operator<< (ostream& os, const PhysicalNumber& c);
+        
       
 	private:
                 Unit u;
