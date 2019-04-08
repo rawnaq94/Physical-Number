@@ -1,8 +1,7 @@
+#include <iostream>
 #ifndef PHYSICALNUMBER_H
 #define PHYSICALNUMBER_H
-#include <iostream>
 #include "Unit.h"
-
 using namespace std;
 
 
@@ -11,13 +10,10 @@ namespace ariel
 
     class PhysicalNumber
     {
-       private:
-                   double number;
-	            Unit _x;
-    
+     
         public:
-        PhysicalNumber(double num,Unit u);
-        PhysicalNumber(const PhysicalNumber& pn);
+        PhysicalNumber(double number,Unit _x);
+        PhysicalNumber(const PhysicalNumber& f1);
 
         const PhysicalNumber operator+(const PhysicalNumber&); 
 	const PhysicalNumber operator-(const PhysicalNumber&);
@@ -42,7 +38,9 @@ namespace ariel
     friend ostream& operator<< (ostream& os, const PhysicalNumber& c);//פלט
     friend istream& operator>> (istream& is, PhysicalNumber& c);//קלט
     
-        
+         private:
+                   double number;
+	            Unit _x;
      };
 	
 }
