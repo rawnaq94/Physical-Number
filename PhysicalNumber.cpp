@@ -49,12 +49,12 @@ using namespace ariel;
 
           // check equal by boolean operator 
 
-    bool PhysicalNumber::operator== (const PhysicalNumber& other){ return false; }
-    bool PhysicalNumber::operator!= (const PhysicalNumber& other){ return false; }
-    bool PhysicalNumber::operator> (const PhysicalNumber& other){ return false; }
-    bool PhysicalNumber::operator< (const PhysicalNumber& other){ return false; }
-    bool PhysicalNumber::operator>= (const PhysicalNumber& other){ return false; }
-    bool PhysicalNumber::operator<= (const PhysicalNumber& other){ return false; }
+    bool PhysicalNumber::operator== (const PhysicalNumber& n){ return false; }
+    bool PhysicalNumber::operator!= (const PhysicalNumber& n){ return false; }
+    bool PhysicalNumber::operator> (const PhysicalNumber& n){ return false; }
+    bool PhysicalNumber::operator< (const PhysicalNumber& n){ return false; }
+    bool PhysicalNumber::operator>= (const PhysicalNumber& n){ return false; }
+    bool PhysicalNumber::operator<= (const PhysicalNumber& n){ return false; }
     
 
           // promotion and subtraction operator
