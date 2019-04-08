@@ -9,11 +9,11 @@ namespace ariel {
 
 class PhysicalNumber{
     private:
-    Unit u;
-    double num;
+    Unit _x;
+    double number;
     
     public:
-    PhysicalNumber(double num,Unit u);
+    PhysicalNumber(double number,Unit _x);
     PhysicalNumber(const PhysicalNumber& pn);
 
     const PhysicalNumber operator+(const PhysicalNumber&); 
