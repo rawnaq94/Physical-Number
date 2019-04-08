@@ -160,16 +160,17 @@ int main() {
     .CHECK_OUTPUT(aa-cc, "11.99[km]")
     .CHECK_OUTPUT(bb-aa, "1194000[cm]") 
     .CHECK_OUTPUT(bb-cc, "5000[cm]")
+    .CHECK_OUTPUT(aa-aa, "0[km]")
     
     .CHECK_OUTPUT(dd-ee, "39.8[kg]")
     .CHECK_OUTPUT(ff-dd, "19.96[ton]")
     .CHECK_OUTPUT(ff-ee, "19.9998[ton]")
+    .CHECK_OUTPUT(ee-ee, "0[g]")
       
     .CHECK_OUTPUT(gg-hh, "4.9166667[hour]") 
     .CHECK_OUTPUT(gg-ii, "4[hour]")
-      
-      
-      
+    .CHECK_OUTPUT(ii-hh, "55[min]")
+    .CHECK_OUTPUT(hh-hh, "0[sec]")
       
       
    // error output 
@@ -182,9 +183,69 @@ int main() {
      .CHECK_THROWS(ee-dd)
      .CHECK_THROWS(ee-ff)
       
-    
+     .CHECK_THROWS(hh-gg)
+     .CHECK_THROWS(hh-ii)
+     .CHECK_THROWS(ii-gg)
+      
+   // opratot (+=) && opratot (-=)
+      
+     .setname("Compatible dimensions") 
+     .CHECK_OUTPUT(aa+=bb, "12.06[km]") 
+     .CHECK_OUTPUT(aa, "12.06[km]")
+     .CHECK_OUTPUT(dd+=ee, "40.2[kg]")
+     .CHECK_OUTPUT(dd, "40.2[kg]")
+     .CHECK_OUTPUT(gg+=ii, "6[hour]")
+     .CHECK_OUTPUT(gg, "6[hour]")
+      
+     .CHECK_OUTPUT(bb-=cc, "5000[cm]")
+     .CHECK_OUTPUT(bb, "5000[cm]") 
+     .CHECK_OUTPUT(ff-=dd, "19.96[ton]") 
+     .CHECK_OUTPUT(ff, "19.96[ton]") 
+     .CHECK_OUTPUT(gg-=ii, "4[hour]")
+     .CHECK_OUTPUT(gg, "4[hour]")  
       
       
+   // opratot (<) && opratot (>)  
+      
+     .setname("Compatible dimensions") 
+     .CHECK_OK(aa>bb)
+     .CHECK_OK(aa>cc)
+     .CHECK_OK(bb<aa)
+     .CHECK_OK(bb>cc)
+     .CHECK_OK(cc<aa)
+     .CHECK_OK(cc<bb)
+      
+     .CHECK_OK(dd>ee)
+     .CHECK_OK(dd<ff)  
+     .CHECK_OK(ee<dd) 
+     .CHECK_OK(ee<ff) 
+     .CHECK_OK(ff>dd)      
+     .CHECK_OK(ff>ee)
+      
+     .CHECK_OK(gg>hh) 
+     .CHECK_OK(gg>ii) 
+     .CHECK_OK(hh<gg)
+     .CHECK_OK(ii<gg)
+     .CHECK_OK(hh<ii)
+     .CHECK_OK(ii>hh)
+      
+      
+    // error output 
+      
+     .setname("Incompatible dimensions")
+     .CHECK_THROWS(aa+dd)
+     .CHECK_THROWS(bb+ee) 
+     .CHECK_THROWS(cc+ff) 
+     .CHECK_THROWS(dd+gg) 
+     .CHECK_THROWS(ee+hh)  
+     .CHECK_THROWS(ff+ii) 
+      
+     .CHECK_THROWS(cc-ii)
+     .CHECK_THROWS(bb-hh) 
+     .CHECK_THROWS(cc-gg) 
+     .CHECK_THROWS(dd-ii) 
+     .CHECK_THROWS(ee-gg) 
+     .CHECK_THROWS(ff-aa) 
       
       
       
