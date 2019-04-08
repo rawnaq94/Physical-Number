@@ -11,16 +11,16 @@ using namespace ariel;
 
           // copy constructor
 
-    PhysicalNumber::PhysicalNumber(double num,Unit u)
+    PhysicalNumber::PhysicalNumber(double number,Unit _x)
     {
-         this->num=num;
-         this->u=u;
+         this->number=number;
+         this->_x=_x;
      }
 
     PhysicalNumber::PhysicalNumber(const PhysicalNumber& pn)
     {
-        this->num=pn.num;
-        this->u=pn.u;
+        this->number=pn.number;
+        this->_x=pn._x;
     }
 
           // onry operator
@@ -33,14 +33,14 @@ using namespace ariel;
 
     const PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& p1)
     {
-         double value=num;
-         return PhysicalNumber(value,u);
+         double value=number;
+         return PhysicalNumber(value,_x);
     }
     
     const PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& p1)
     {
-	 double value=num;
-         return PhysicalNumber(value,u);
+	 double value=number;
+         return PhysicalNumber(value,_x);
      }
 
     PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& p1){ return *this; }
