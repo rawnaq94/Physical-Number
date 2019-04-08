@@ -17,10 +17,10 @@ using namespace ariel;
          this->_x=_x;
      }
 
-    PhysicalNumber::PhysicalNumber(const PhysicalNumber& pn)
+    PhysicalNumber::PhysicalNumber(const PhysicalNumber& temp)
     {
-        this->number=pn.number;
-        this->_x=pn._x;
+        this->number=temp.number;
+        this->_x=temp._x;
     }
 
           // onry operator
@@ -64,7 +64,7 @@ using namespace ariel;
     PhysicalNumber PhysicalNumber::operator--(int){ return *this; }
     PhysicalNumber PhysicalNumber::operator++(int)
     {
-        PhysicalNumber pn(*this);
+        PhysicalNumber temp(*this);
     	 return *this;
     }
     
