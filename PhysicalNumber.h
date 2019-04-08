@@ -10,7 +10,9 @@ namespace ariel
 
     class PhysicalNumber
     {
-   
+       private:
+                   double number;
+	            Unit _x;
     
         public:
         PhysicalNumber(double num,Unit u);
@@ -39,9 +41,7 @@ namespace ariel
     friend ostream& operator<< (ostream& os, const PhysicalNumber& c);//פלט
     friend istream& operator>> (istream& is, PhysicalNumber& c);//קלט
     
-        private:
-                   double number;
-	            Unit _x;
+        
      };
 	
 }
