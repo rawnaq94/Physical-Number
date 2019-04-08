@@ -25,15 +25,12 @@ int main() {
     PhysicalNumber d(30, Unit::MIN);
     
      // NEW BASIC TESTS 
-    PhysicalNumber aa(12, Unit::KM);
-    PhysicalNumber bb(6000, Unit::CM);
-    PhysicalNumber cc(10, Unit::M);
-    PhysicalNumber dd(40, Unit::KG);
-    PhysicalNumber ee(200, Unit::G);
-    PhysicalNumber ff(2, Unit::TON);
-    PhysicalNumber gg(5, Unit::HOUR);
-    PhysicalNumber hh(30, Unit::SEC);
-    PhysicalNumber ii(60, Unit::MIN); 
+   
+   PhysicalNumber cm(3000, Unit::CM);
+    PhysicalNumber sec(60, Unit::SEC);
+    PhysicalNumber ton(2, Unit::TON);
+    PhysicalNumber kg(30, Unit::KG);
+    PhysicalNumber g(500, Unit::G);
     
 
     testcase
@@ -63,64 +60,55 @@ int main() {
 
     // YOUR TESTS - INSERT AS MANY AS YOU WANT
 
-     .setname("Basic output") 
-     .CHECK_OUTPUT(aa, "12[km]")
-     .CHECK_OUTPUT(bb, "6000[cm]")
-     .CHECK_OUTPUT(cc, "10[m]")
-     .CHECK_OUTPUT(dd, "40[kg]")
-     .CHECK_OUTPUT(ee, "200[g]")
-     .CHECK_OUTPUT(ff, "2[ton]")
-     .CHECK_OUTPUT(gg, "5[hour]")
-     .CHECK_OUTPUT(hh, "30[sec]")
-     .CHECK_OUTPUT(ii, "60[min]") 
-      
-      
-      
-     // opratot (+=) && opratot (-=)
-     // operator (++) && opertor (--)
-      
-     .setname("Compatible dimensions")
-     .CHECK_OUTPUT(bb+bb, "12000[cm]")
-     .CHECK_OUTPUT(ff-=dd, "19.96[ton]") 
-     .CHECK_OUTPUT(ff, "19.96[ton]") 
-     .CHECK_OUTPUT(hh++, "31[sec]")
-     .CHECK_OUTPUT(++ee, "201[g]")
-     .CHECK_OUTPUT(--ee, "200[g]")
-     .CHECK_OUTPUT(dd-=ee, "39.8[kg]")
-      
-     
-     .setname("Incompatible dimensions")
-     .CHECK_THROWS(bb+hh)
-     .CHECK_THROWS(bb+ff)
-     .CHECK_THROWS(dd-hh)
-     .CHECK_THROWS(ff-=hh)
-     .CHECK_THROWS(ee-bb)
-     .CHECK_THROWS(ee>hh)
-     .CHECK_THROWS(ff==bb)
-     .CHECK_THROWS(bb<=hh)
-      
-      
-       
-     .setname("Check OK")
-     .CHECK_OK(istringstream("200[g]")>>ee)
-     .CHECK_OK(istringstream("12000[cm]")>>bb)
-     .CHECK_OK(istringstream("31[sec]")>>hh)
-     .CHECK_OK(istringstream("39.8[kg]")>>dd)
-      
-      
-    // opratot (<) && opratot (>)  
-   // opratot (==) && opratot (!=) 
-     
-     .setname("Compatible dimensions") 
-     .CHECK_EQUAL(hh>d,false)
-     .CHECK_EQUAL(dd==ff,false)
-     .CHECK_OK(istringstream("1000[kg]")>>dd)
-     .CHECK_OUTPUT(dd, "10000[kg]")
-     .CHECK_EQUAL(ee!=dd,true)
-     .CHECK_EQUAL(ff>ee,true)
-     .CHECK_EQUAL(ee>dd,false)
-     .CHECK_EQUAL(bb==a,false)
-     .CHECK_EQUAL(c<d,true)
+    .setname("Basic correct output")
+    .CHECK_OUTPUT(cm, "3000[cm]")
+    .CHECK_OUTPUT(ton, "2[ton]")
+    .CHECK_OUTPUT(g, "500[g]")
+    .CHECK_OUTPUT(sec, "60[sec]")
+    .CHECK_OUTPUT(kg, "30[kg]")
+
+    .setname("Compatible correct dimensions")
+    .CHECK_OUTPUT(cm+cm, "6000[cm]")
+    .CHECK_OUTPUT((ton+=kg), "2.3[ton]")
+    .CHECK_OUTPUT(ton, "2.3[ton]")
+    .CHECK_OUTPUT(sec++, "61[sec]")
+    .CHECK_OUTPUT(++g, "501[g]")
+    .CHECK_OUTPUT(--g, "500[g]")
+    .CHECK_OUTPUT(ton-kg, "2[ton]")
+    .CHECK_OUTPUT((kg-=g), "29.5[kg]")
+
+    .setname("Incompatible dimensions")
+    .CHECK_THROWS(cm+sec)
+    .CHECK_THROWS(cm+ton)
+    .CHECK_THROWS(kg-sec)
+    .CHECK_THROWS(ton-=sec)
+    .CHECK_THROWS(cm+ton)
+    .CHECK_THROWS(kg-sec)
+    .CHECK_THROWS(g-cm)
+    .CHECK_THROWS(g>sec)
+    .CHECK_THROWS(ton==cm)
+    .CHECK_THROWS(cm<=sec)
+    
+    .setname("Check OK'S")
+    .CHECK_OK(istringstream("500[g]")>>g)
+    .CHECK_OK(istringstream("6000[cm]")>>cm)
+    .CHECK_OK(istringstream("2.3[ton]")>>ton)
+    .CHECK_OK(istringstream("61[sec]")>>sec)
+    .CHECK_OK(istringstream("29.5[kg]")>>kg)
+
+    .setname("comparsion")
+    .CHECK_EQUAL(sec<d,true)
+    .CHECK_EQUAL(kg==ton,false)
+    .CHECK_OK(istringstream("1000[kg]")>>kg)
+    .CHECK_OUTPUT(kg , "1000[kg]")
+    .CHECK_OK(istringstream("1[ton]")>>ton)
+    .CHECK_OUTPUT(ton , "1[ton]")    
+    .CHECK_EQUAL(ton==kg,true)
+    .CHECK_EQUAL(g!=kg,true)
+    .CHECK_EQUAL(ton>g,true)
+    .CHECK_EQUAL(g>kg,false)
+    .CHECK_EQUAL(cm ==a,false)
+    .CHECK_EQUAL(c<d,true)
     
       
     
