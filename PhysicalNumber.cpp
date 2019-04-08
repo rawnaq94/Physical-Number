@@ -50,12 +50,12 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& a){ return *thi
  
  // check equal by boolean operator 
        
-bool PhysicalNumber::operator== (const PhysicalNumber& a){ return false; }
-bool PhysicalNumber::operator!= (const PhysicalNumber& a){ return false; }
-bool PhysicalNumber::operator>= (const PhysicalNumber& a){ return false; }
-bool PhysicalNumber::operator<= (const PhysicalNumber& a){ return false; }
-bool PhysicalNumber::operator> (const PhysicalNumber& a){ return false; }
-bool PhysicalNumber::operator< (const PhysicalNumber& a){ return false; }
+bool PhysicalNumber::operator== (const PhysicalNumber& b){ return false; }
+bool PhysicalNumber::operator!= (const PhysicalNumber& b){ return false; }
+bool PhysicalNumber::operator>= (const PhysicalNumber& b){ return false; }
+bool PhysicalNumber::operator<= (const PhysicalNumber& b){ return false; }
+bool PhysicalNumber::operator> (const PhysicalNumber& b){ return false; }
+bool PhysicalNumber::operator< (const PhysicalNumber& b){ return false; }
 
 
 // promotion and subtraction operator
