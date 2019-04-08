@@ -25,11 +25,15 @@ int main() {
     PhysicalNumber d(30, Unit::MIN);
     
     // NEW BASIC TESTS 
-    PhysicalNumber e(3000, Unit::CM);
-    PhysicalNumber f(60, Unit::SEC);
-    PhysicalNumber g(2, Unit::TON);
-    PhysicalNumber h(30, Unit::KG);
-    PhysicalNumber i(500, Unit::G);
+    PhysicalNumber e(4000, Unit::CM);
+    PhysicalNumber f(80, Unit::SEC);
+    PhysicalNumber g(4, Unit::TON);
+    PhysicalNumber h(40, Unit::KG);
+    PhysicalNumber i(700, Unit::G);
+    PhysicalNumber l(3, Unit::KM);
+    PhysicalNumber m(20, Unit::M);
+    PhysicalNumber n(7, Unit::HOUR);
+    PhysicalNumber o(60, Unit::MIN);
 
     testcase
     .setname("Basic output")
@@ -62,6 +66,7 @@ int main() {
       
     .setname("Basic output")
     .CHECK_OUTPUT(g, "4[ton]")
+      
     .CHECK_OUTPUT(e, "4000[cm]")
     .CHECK_OUTPUT(i, "700[g]")
     .CHECK_OUTPUT(h, "40[kg]")
@@ -72,14 +77,11 @@ int main() {
  //  operator (++) && operator (--)
       
     .setname("Compatible dimensions")
-    .CHECK_OUTPUT(e+e, "6000[cm]")
-    .CHECK_OUTPUT((g+=h), "2.3[ton]")
-    .CHECK_OUTPUT(g, "2.3[ton]")
-    .CHECK_OUTPUT(f++, "61[sec]")
-    .CHECK_OUTPUT(++i, "501[g]")
-    .CHECK_OUTPUT(--i, "500[g]")
-    .CHECK_OUTPUT(g-h, "2[ton]")
-    .CHECK_OUTPUT((h-=i), "29.5[kg]")
+    .CHECK_OUTPUT(e+e, "8000[cm]")
+    .CHECK_OUTPUT(f++, "81[sec]")
+    .CHECK_OUTPUT(++i, "701[g]")
+    .CHECK_OUTPUT(--i, "700[g]")
+    .CHECK_OUTPUT((h-=i), "39.3[kg]")
       
   // error calculations    
 
@@ -96,19 +98,17 @@ int main() {
     .CHECK_THROWS(e<=f)
     
     .setname("Check OK")
-    .CHECK_OK(istringstream("500[g]")>>i)
-    .CHECK_OK(istringstream("6000[cm]")>>e)
-    .CHECK_OK(istringstream("2.3[ton]")>>g)
-    .CHECK_OK(istringstream("61[sec]")>>f)
-    .CHECK_OK(istringstream("29.5[kg]")>>h)
+    .CHECK_OK(istringstream("700[g]")>>i)
+    .CHECK_OK(istringstream("8000[cm]")>>e)
+    .CHECK_OK(istringstream("81[sec]")>>f)
+    .CHECK_OK(istringstream("39.3[kg]")>>h)
 
+      
     .setname("Compatible dimensions")
     .CHECK_EQUAL(f<d,true)
     .CHECK_EQUAL(h==g,false)
     .CHECK_OK(istringstream("1000[kg]")>>h)
-    .CHECK_OUTPUT(h , "1000[kg]")
-    .CHECK_OK(istringstream("1[ton]")>>g)
-    .CHECK_OUTPUT(g , "1[ton]")    
+    .CHECK_OUTPUT(h , "1000[kg]")    
     .CHECK_EQUAL(g==h,true)
     .CHECK_EQUAL(i!=h,true)
     .CHECK_EQUAL(g>i,true)
