@@ -12,7 +12,7 @@ namespace ariel
     {
     
        public:
-       PhysicalNumber(double num,Unit u);
+       PhysicalNumber(double number,Unit _x);
        PhysicalNumber(const PhysicalNumber& pn);
 	    
 	    // onry operator
@@ -52,8 +52,8 @@ namespace ariel
         
       
 	private:
-                Unit u;
-                double num;
+                double number;
+	        Unit _x;
     };
 }
 #endif
