@@ -90,7 +90,8 @@ int main() {
      .CHECK_OUTPUT(+ii, "60[min]")
     
    // oprator (-)
-      
+
+     .setname("Compatible dimensions")
      .CHECK_OUTPUT(-aa, "-12[km]")
      .CHECK_OUTPUT(-bb, "-6000[cm]")
      .CHECK_OUTPUT(-cc, "-10[m]")
@@ -102,7 +103,8 @@ int main() {
      .CHECK_OUTPUT(-ii, "-60[min]")
       
   // opratot (+) 
-      
+     
+     .setname("Compatible dimensions")
      .CHECK_OUTPUT(aa++, "13[km]")
      .CHECK_OUTPUT(bb++, "6001[cm]")
      .CHECK_OUTPUT(cc++, "11[m]")
@@ -115,6 +117,7 @@ int main() {
 
   // oprator (-)   
       
+     .setname("Compatible dimensions")  
      .CHECK_OUTPUT(aa--, "11[km]")
      .CHECK_OUTPUT(bb--, "5999[cm]")
      .CHECK_OUTPUT(cc--, "9[m]")
@@ -127,29 +130,65 @@ int main() {
       
   // opratot (+)    
       
+     .setname("Compatible dimensions")
      .CHECK_OUTPUT(aa+bb, "12.06[km]")
      .CHECK_OUTPUT(aa+cc, "12.01[km]")
-     .CHECK_OUTPUT(bb+aa, "12[km]")
-     .CHECK_OUTPUT(bb+cc, "12[km]")
-     .CHECK_OUTPUT(cc+aa, "12[km]")
-     .CHECK_OUTPUT(cc+bb, "12[km]")
+     .CHECK_OUTPUT(bb+aa, "1206000[cm]")
+     .CHECK_OUTPUT(bb+cc, "7000[cm]")
+     .CHECK_OUTPUT(cc+aa, "12010[m]")
+     .CHECK_OUTPUT(cc+bb, "70[m]")
       
-     .CHECK_OUTPUT(dd+ee, "12[km]")
-     .CHECK_OUTPUT(dd+ff, "12[km]")
-     .CHECK_OUTPUT(ee+dd, "12[km]")
-     .CHECK_OUTPUT(ee+ff, "12[km]")
-     .CHECK_OUTPUT(ff+dd, "12[km]")
-     .CHECK_OUTPUT(ff+ee, "12[km]")
+     .CHECK_OUTPUT(dd+ee, "40.2[kg]")
+     .CHECK_OUTPUT(dd+ff, "20040[kg]")
+     .CHECK_OUTPUT(ee+dd, "40200[g]")
+     .CHECK_OUTPUT(ee+ff, "20000200[g]")
+     .CHECK_OUTPUT(ff+dd, "20.04[ton]")
+     .CHECK_OUTPUT(ff+ee, "20.0002[ton]")
       
-     .CHECK_OUTPUT(gg+hh, "12[km]")
-     .CHECK_OUTPUT(gg+ii, "12[km]")
-     .CHECK_OUTPUT(hh+gg, "12[km]")
-     .CHECK_OUTPUT(hh+ii, "12[km]")
-     .CHECK_OUTPUT(ii+gg, "12[km]")
-     .CHECK_OUTPUT(ii+hh, "12[km]")
+     .CHECK_OUTPUT(gg+hh, "5.0833333[hour]")
+     .CHECK_OUTPUT(gg+ii, "6[hour]")
+     .CHECK_OUTPUT(hh+gg, "18300[sec]")
+     .CHECK_OUTPUT(hh+ii, "3900[sec]")
+     .CHECK_OUTPUT(ii+gg, "360[min]")
+     .CHECK_OUTPUT(ii+hh, "65[min]")
       
       
-  
+    // opratot (-)
+      
+    .setname("Compatible dimensions")
+    .CHECK_OUTPUT(aa-bb, "11.94[km]")
+    .CHECK_OUTPUT(aa-cc, "11.99[km]")
+    .CHECK_OUTPUT(bb-aa, "1194000[cm]") 
+    .CHECK_OUTPUT(bb-cc, "5000[cm]")
+    
+    .CHECK_OUTPUT(dd-ee, "39.8[kg]")
+    .CHECK_OUTPUT(ff-dd, "19.96[ton]")
+    .CHECK_OUTPUT(ff-ee, "19.9998[ton]")
+      
+    .CHECK_OUTPUT(gg-hh, "4.9166667[hour]") 
+    .CHECK_OUTPUT(gg-ii, "4[hour]")
+      
+      
+      
+      
+      
+   // error output 
+      
+     .setname("Incompatible dimensions")
+     .CHECK_THROWS(cc-aa) 
+     .CHECK_THROWS(cc-bb)
+    
+     .CHECK_THROWS(dd-ff)
+     .CHECK_THROWS(ee-dd)
+     .CHECK_THROWS(ee-ff)
+      
+    
+      
+      
+      
+      
+      
+      
       
       
       
