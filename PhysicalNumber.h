@@ -13,7 +13,7 @@ namespace ariel
     
        public:
        PhysicalNumber(double number,Unit _x);
-       PhysicalNumber(const PhysicalNumber& pn);
+       PhysicalNumber(const PhysicalNumber& temp);
 	    
 	    // onry operator
             
