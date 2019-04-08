@@ -102,31 +102,28 @@ int main() {
      .CHECK_OUTPUT(-hh, "-300[sec]")
      .CHECK_OUTPUT(-ii, "-60[min]")
       
-  // opratot (+) 
+  // opratot (+) && operator (-)
      
      .setname("Compatible dimensions")
      .CHECK_OUTPUT(aa++, "13[km]")
+     .CHECK_OUTPUT(aa--, "12[km]")
      .CHECK_OUTPUT(bb++, "6001[cm]")
+     .CHECK_OUTPUT(bb--, "6000[cm]")
      .CHECK_OUTPUT(cc++, "11[m]")
+     .CHECK_OUTPUT(cc--, "10[m]")
      .CHECK_OUTPUT(dd++, "41[kg]")
+     .CHECK_OUTPUT(dd--, "40[kg]")
      .CHECK_OUTPUT(ee++, "201[g]")
+     .CHECK_OUTPUT(ee--, "200[g]")
      .CHECK_OUTPUT(ff++, "21[ton]")
+     .CHECK_OUTPUT(ff--, "20[ton]")
      .CHECK_OUTPUT(gg++, "6[hour]")
+     .CHECK_OUTPUT(gg--, "5[hour]")
      .CHECK_OUTPUT(hh++, "301[sec]")
+     .CHECK_OUTPUT(hh--, "300[sec]")
      .CHECK_OUTPUT(ii++, "61[min]")
+     .CHECK_OUTPUT(ii--, "60[min]")
 
-  // oprator (-)   
-      
-     .setname("Compatible dimensions")  
-     .CHECK_OUTPUT(aa--, "11[km]")
-     .CHECK_OUTPUT(bb--, "5999[cm]")
-     .CHECK_OUTPUT(cc--, "9[m]")
-     .CHECK_OUTPUT(dd--, "39[kg]")
-     .CHECK_OUTPUT(ee--, "199[g]")
-     .CHECK_OUTPUT(ff--, "19[ton]")
-     .CHECK_OUTPUT(gg--, "4[hour]")
-     .CHECK_OUTPUT(hh--, "299[sec]")
-     .CHECK_OUTPUT(ii--, "59[min]")
       
   // opratot (+)    
       
@@ -161,25 +158,19 @@ int main() {
     .CHECK_OUTPUT(bb-aa, "1194000[cm]") 
     .CHECK_OUTPUT(bb-cc, "5000[cm]")
     .CHECK_OUTPUT((aa-=aa),"0[km]")
-    .CHECK_OUTPUT(aa-aa, "0[km]")
     .CHECK_OUTPUT(aa,"0[km]")
-    .CHECK_EQUAL(aa==PhysicalNumber(0, Unit::KM),true)
     
     .CHECK_OUTPUT(dd-ee, "39.8[kg]")
     .CHECK_OUTPUT(ff-dd, "19.96[ton]")
     .CHECK_OUTPUT(ff-ee, "19.9998[ton]")
     .CHECK_OUTPUT((ee-=ee),"0[g]")
-    .CHECK_OUTPUT(ee-ee, "0[g]")
     .CHECK_OUTPUT(ee,"0[g]")
-    .CHECK_EQUAL(ee==PhysicalNumber(0, Unit::G),true)
       
     .CHECK_OUTPUT(gg-hh, "4.9166667[hour]") 
     .CHECK_OUTPUT(gg-ii, "4[hour]")
     .CHECK_OUTPUT(ii-hh, "55[min]")
     .CHECK_OUTPUT((hh-=hh),"0[sec]")
-    .CHECK_OUTPUT(hh-hh, "0[sec]")
     .CHECK_OUTPUT(hh,"0[sec]")  
-    .CHECK_EQUAL(hh==PhysicalNumber(0, Unit::SEC),true) 
       
    // error output 
       
@@ -267,14 +258,7 @@ int main() {
      .CHECK_THROWS(ee-gg) 
      .CHECK_THROWS(ff-aa) 
       
-      
-   // Unit Test
-    
-     .setname("Compatible dimensions") 
-      
-      
-      
-      
+ 
       
       
       .setname("...")
