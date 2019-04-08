@@ -1,86 +1,76 @@
-#include "PhysicalNumber.h"
+// Partial realization --- Part 1
+
 #include <iostream>
-#include<exception>
-#include <math.h> 
+#include "PhysicalNumber.h"
+#include <exception>
+#include <math.h>
 using namespace std;
 using namespace ariel;
 
+// copy constructor
 
-    PhysicalNumber::PhysicalNumber(double number,Unit _x){
-         this->number=number;
-         this->_x=_x;
-     }
-    PhysicalNumber::PhysicalNumber(const PhysicalNumber& pn){
-        this->number=pn.number;
-        this->_x=pn._x;
-    }
-
-    const PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& p1){
-         double value=number;
-         return PhysicalNumber(value,_x);
-    }
-    
-	const PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& p1){
-	      double value=number;
-         return PhysicalNumber(value,_x);
-	}
-	PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& p1){
-	    return *this;
-	}
-	PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& p1){
-	    return *this;
-	}
-    PhysicalNumber PhysicalNumber::operator+(){
-        return *this;
-    } // Unari
-	PhysicalNumber PhysicalNumber::operator-(){
-        return *this;
-    } // Unari
-
-    bool PhysicalNumber::operator> (const PhysicalNumber& other){
-        return false;
-    }
-    bool PhysicalNumber::operator< (const PhysicalNumber& other){
-        return false;
-    }
-    bool PhysicalNumber::operator>= (const PhysicalNumber& other){
-        return false;
-    }
-    bool PhysicalNumber::operator<= (const PhysicalNumber& other){
-        return false;
-    }
-    bool PhysicalNumber::operator== (const PhysicalNumber& other){
-        return false;
-    }
-    bool PhysicalNumber::operator!= (const PhysicalNumber& other){
-        return false;
-    }
-    
-    PhysicalNumber PhysicalNumber::operator++(){//++i first add and then print
-        //++*this.num; //better
-        //return PhysicalNumber(*this.num,*this.u);
-	return *this;
-    }
-    PhysicalNumber PhysicalNumber::operator++(int){//i++
-        PhysicalNumber pn(*this);
-        //++*this.num;
-        //return PhysicalNumber(pn.num,pn.u);//first print and then add
-    	 return *this;
-    }
-    PhysicalNumber PhysicalNumber::operator--(){//--i
-     //return PhysicalNumber(*this.num-1,*this.u);
-    return *this;
-    }
-    PhysicalNumber PhysicalNumber::operator--(int){//i--
-     return *this;
-    }
-    
-   ostream &ariel::operator<< (ostream& os, const PhysicalNumber& c){//output
-    
-    return os ;
-
-    }
-  istream &ariel::operator>> (istream& is, PhysicalNumber& c){
-	return is;
+PhysicalNumber::PhysicalNumber(double number, Unit _x)
+{
+     this->number = number;
+     this->_x = _x;
 }
 
+
+PhysicalNumber::PhysicalNumber(const PhysicalNumber& value)
+{
+     this->number = value.number;
+     this->_x = value._x;
+}
+
+// onry operator
+ 
+PhysicalNumber PhysicalNumber::operator+(){ return *this; }
+PhysicalNumber PhysicalNumber::operator-(){ return *this; }
+
+
+// operator (+) && operator (-)
+
+const PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& a)
+{
+      double num = number;
+      return PhysicalNumber(num,_x);
+}
+
+
+const PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& a)
+{
+      double num = number;
+      return PhysicalNumber(num,_x);
+}
+
+
+PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& a){ return *this; }
+PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& a){ return *this; }
+ 
+ 
+ // check equal by boolean operator 
+       
+bool PhysicalNumber::operator== (const PhysicalNumber& a){ return false; }
+bool PhysicalNumber::operator!= (const PhysicalNumber& a){ return false; }
+bool PhysicalNumber::operator>= (const PhysicalNumber& a){ return false; }
+bool PhysicalNumber::operator<= (const PhysicalNumber& a){ return false; }
+bool PhysicalNumber::operator> (const PhysicalNumber& a){ return false; }
+bool PhysicalNumber::operator< (const PhysicalNumber& a){ return false; }
+
+
+// promotion and subtraction operator
+
+PhysicalNumber PhysicalNumber::operator++(){ return *this; }
+PhysicalNumber PhysicalNumber::operator--(){ return *this; }
+PhysicalNumber PhysicalNumber::operator--(int){ return *this; }
+PhysicalNumber PhysicalNumber::operator++(int)
+{
+     PhysicalNumber value(*this);
+     return *this;
+}
+
+
+ // input && output
+ 
+istream &ariel::operator>> (istream& is, PhysicalNumber& c){ return is; }
+ostream &ariel::operator<< (ostream& os, const PhysicalNumber& c){ return os; }
