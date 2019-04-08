@@ -33,14 +33,14 @@ using namespace ariel;
 
     const PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& p1)
     {
-         double value=number;
-         return PhysicalNumber(value,_x);
+         double num=number;
+         return PhysicalNumber(num,_x);
     }
     
     const PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& p1)
     {
-	 double value=number;
-         return PhysicalNumber(value,_x);
+	 double num=number;
+         return PhysicalNumber(num,_x);
      }
 
     PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& p1){ return *this; }
