@@ -31,20 +31,20 @@ using namespace ariel;
 
           // operator (+) && operator (-)
 
-    const PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& p1)
+    const PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& a)
     {
          double num=number;
          return PhysicalNumber(num,_x);
     }
     
-    const PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& p1)
+    const PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& a)
     {
 	 double num=number;
          return PhysicalNumber(num,_x);
      }
 
-    PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& p1){ return *this; }
-    PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& p1){ return *this; }
+    PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& a){ return *this; }
+    PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& a){ return *this; }
    
 
           // check equal by boolean operator 
