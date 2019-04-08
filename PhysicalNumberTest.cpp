@@ -160,18 +160,26 @@ int main() {
     .CHECK_OUTPUT(aa-cc, "11.99[km]")
     .CHECK_OUTPUT(bb-aa, "1194000[cm]") 
     .CHECK_OUTPUT(bb-cc, "5000[cm]")
+    .CHECK_OUTPUT((aa-=aa),"0[km]")
     .CHECK_OUTPUT(aa-aa, "0[km]")
+    .CHECK_OUTPUT(aa,"0[km]")
+    .CHECK_EQUAL(aa==PhysicalNumber(0, Unit::KM),true)
     
     .CHECK_OUTPUT(dd-ee, "39.8[kg]")
     .CHECK_OUTPUT(ff-dd, "19.96[ton]")
     .CHECK_OUTPUT(ff-ee, "19.9998[ton]")
+    .CHECK_OUTPUT((ee-=ee),"0[g]")
     .CHECK_OUTPUT(ee-ee, "0[g]")
+    .CHECK_OUTPUT(ee,"0[g]")
+    .CHECK_EQUAL(ee==PhysicalNumber(0, Unit::G),true)
       
     .CHECK_OUTPUT(gg-hh, "4.9166667[hour]") 
     .CHECK_OUTPUT(gg-ii, "4[hour]")
     .CHECK_OUTPUT(ii-hh, "55[min]")
+    .CHECK_OUTPUT((hh-=hh),"0[sec]")
     .CHECK_OUTPUT(hh-hh, "0[sec]")
-      
+    .CHECK_OUTPUT(hh,"0[sec]")  
+    .CHECK_EQUAL(hh==PhysicalNumber(0, Unit::SEC),true) 
       
    // error output 
       
@@ -228,6 +236,18 @@ int main() {
      .CHECK_OK(ii<gg)
      .CHECK_OK(hh<ii)
      .CHECK_OK(ii>hh)
+     
+     .CHECK_EQUAL(bb>aa,false)
+     .CHECK_EQUAL(cc>aa,false)
+     .CHECK_EQUAL(ff>dd,true)
+     .CHECK_EQUAL(ii<gg,true)
+     .CHECK_EQUAL(hh>ii,false)
+     .CHECK_EQUAL(ff<dd,false)
+     .CHECK_EQUAL(ee<ff,true)
+     .CHECK_EQUAL(cc<bb,true)
+     .CHECK_EQUAL(hh<=ii,true) 
+     .CHECK_EQUAL(ii>=hh,true) 
+    
       
       
     // error output 
@@ -248,7 +268,9 @@ int main() {
      .CHECK_THROWS(ff-aa) 
       
       
-      
+   // Unit Test
+    
+     .setname("Compatible dimensions") 
       
       
       
