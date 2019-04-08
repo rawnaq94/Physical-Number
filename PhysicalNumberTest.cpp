@@ -61,12 +61,15 @@ int main() {
    // PRINT OUTPUT
       
     .setname("Basic output")
-    .CHECK_OUTPUT(e, "3000[cm]")
-    .CHECK_OUTPUT(g, "2[ton]")
-    .CHECK_OUTPUT(i, "500[g]")
-    .CHECK_OUTPUT(f, "60[sec]")
-    .CHECK_OUTPUT(h, "30[kg]")
+    .CHECK_OUTPUT(g, "4[ton]")
+    .CHECK_OUTPUT(e, "4000[cm]")
+    .CHECK_OUTPUT(i, "700[g]")
+    .CHECK_OUTPUT(h, "40[kg]")
+    .CHECK_OUTPUT(f, "80[sec]")
+    
 
+  // operator (+) && operator (-)
+ //  operator (++) && operator (--)
       
     .setname("Compatible dimensions")
     .CHECK_OUTPUT(e+e, "6000[cm]")
@@ -77,6 +80,8 @@ int main() {
     .CHECK_OUTPUT(--i, "500[g]")
     .CHECK_OUTPUT(g-h, "2[ton]")
     .CHECK_OUTPUT((h-=i), "29.5[kg]")
+      
+  // error calculations    
 
     .setname("Incompatible dimensions")
     .CHECK_THROWS(e+f)
